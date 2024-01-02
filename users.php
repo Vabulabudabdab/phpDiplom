@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php include __DIR__.'/userDB.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +74,9 @@
                     </div>
                 </div>
             </div>
+
             <div class="row" id="js-contacts">
+            <?php foreach ($result as $usname): ?>
                 <div class="col-xl-4">
                     <div id="c_1" class="card border shadow-0 mb-g shadow-sm-hover" data-filter-tags="oliver kopyov">
                         <div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
@@ -81,12 +84,15 @@
                                 <span class="status status-success mr-3">
                                     <span class="rounded-circle profile-image d-block " style="background-image:url('img/demo/avatars/avatar-b.png'); background-size: cover;"></span>
                                 </span>
+
                                 <div class="info-card-text flex-1">
 
                                 <?php if(!empty($_SESSION['adm'])): ?>
                                 <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false">
-                                        Oliver Kopyov
-                                    
+                         
+                                        <?php echo $usname['name']; ?> 
+                                
+                
                                         <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>
                                         <i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>
                                     </a>
@@ -126,6 +132,7 @@
                                 </button>
                             </div>
                         </div>
+               
                         <div class="card-body p-0 collapse show">
                             <div class="p-3">
                                 <a href="tel:+13174562564" class="mt-1 d-block fs-sm fw-400 text-dark">
@@ -149,7 +156,7 @@
                         </div>
                     </div>
                 </div>
-                
+                <?php endforeach; ?>
         </main>
      
         <!-- BEGIN Page Footer -->

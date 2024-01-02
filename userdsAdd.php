@@ -85,4 +85,5 @@ $statement = $pdo->prepare($sql);
 $statement->execute(['name' => $name, 'workplace' => $workplace, 'telephone' => $telephone, 'adress' => $adress, 'email' => $email, 'password' => $hashed_password, 'status' => $status, 'img' => $img, 'vk' => $vk, 'telegram' => $telegram, 'instagram' => $instagram]);
 
 
+header("Location: /users.php");
 ?>
