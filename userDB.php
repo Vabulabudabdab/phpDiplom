@@ -7,7 +7,7 @@ define('DB_PASSWORD', '');
 
 
 $db = new \PDO(DB_DRIVER.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
-$data = $db->prepare("SELECT name FROM addUser WHERE id = id");
+$data = $db->prepare("SELECT * FROM addUser");
 $data->execute();
 
 
