@@ -128,7 +128,7 @@
                                     </a>
                                     <?php endif; ?>
 
-                                    <span class="text-truncate text-truncate-xl"><?php echo $row['id']; ?><?php echo $row['workplace']; ?> </span>
+                                    <span class="text-truncate text-truncate-xl"><?php echo $row['workplace']; ?> </span>
                                 </div>
                                 <button class="js-expand-btn btn btn-sm btn-default d-none" data-toggle="collapse" data-target="#c_1 > .card-body + .card-body" aria-expanded="false">
                                     <span class="collapsed-hidden">+</span>
