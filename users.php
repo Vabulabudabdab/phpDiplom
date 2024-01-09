@@ -76,7 +76,7 @@
             </div>
 
             <div class="row" id="js-contacts">
-            <?php foreach ($result as $usname): ?>
+            <?php foreach ($result as $row): ?>
                 <div class="col-xl-4">
                     <div id="c_1" class="card border shadow-0 mb-g shadow-sm-hover" data-filter-tags="oliver kopyov">
                         <div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
@@ -91,10 +91,10 @@
                                 <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false">
                          
                                     
-                                        <?php echo $usname['name']; ?>  
-                                
-                
-                                        <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>
+                                        <?php echo $row['name']; ?>
+
+
+                                    <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>
                                         <i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>
                                     </a>
                                   
@@ -112,20 +112,23 @@
                                             <i class="fa fa-camera"></i>
                                             Загрузить аватар
                                         </a>
-                                        <a href="#" class="dropdown-item" onclick="return confirm('are you sure?');">
+                                        <form action="deleteUser.php" method="POST">
+                                        <a href="deleteUser.php?id=<?= $row['id'] ?>" class="dropdown-item" onclick="return confirm('are you sure?');">
                                             <i class="fa fa-window-close"></i>
                                             Удалить
                                         </a>
+                                        </form>
+                                        
                                     </div>
                                     <?php else: ?>
 
                                         <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false">
-                                       <?php echo $usname['name']; ?> 
+                                       <?php echo $row['name']; ?>
                                         </a>
                                     </a>
                                     <?php endif; ?>
-                                 
-                                    <span class="text-truncate text-truncate-xl"><?php echo $usname['workplace']; ?> </span>
+
+                                    <span class="text-truncate text-truncate-xl"><?php echo $row['id']; ?><?php echo $row['workplace']; ?> </span>
                                 </div>
                                 <button class="js-expand-btn btn btn-sm btn-default d-none" data-toggle="collapse" data-target="#c_1 > .card-body + .card-body" aria-expanded="false">
                                     <span class="collapsed-hidden">+</span>
@@ -133,15 +136,15 @@
                                 </button>
                             </div>
                         </div>
-               
+
                         <div class="card-body p-0 collapse show">
                             <div class="p-3">
                                 <a href="tel:+13174562564" class="mt-1 d-block fs-sm fw-400 text-dark">
-                                    <i class="fas fa-mobile-alt text-muted mr-2"></i><?php echo $usname['telephone']; ?> </a>
+                                    <i class="fas fa-mobile-alt text-muted mr-2"></i><?php echo $row['telephone']; ?> </a>
                                 <a href="mailto:oliver.kopyov@smartadminwebapp.com" class="mt-1 d-block fs-sm fw-400 text-dark">
-                                    <i class="fas fa-mouse-pointer text-muted mr-2"></i><?php echo $usname['email']; ?> </a>
+                                    <i class="fas fa-mouse-pointer text-muted mr-2"></i><?php echo $row['email']; ?> </a>
                                 <address class="fs-sm fw-400 mt-4 text-muted">
-                                    <i class="fas fa-map-pin mr-2"></i><?php echo $usname['adress']; ?> </address>
+                                    <i class="fas fa-map-pin mr-2"></i><?php echo $row['adress']; ?> </address>
                                 <div class="d-flex flex-row">
                                     <a href="javascript:void(0);" class="mr-2 fs-xxl" style="color:#4680C2">
                                         <i class="fab fa-vk"></i>
@@ -157,9 +160,10 @@
                         </div>
                     </div>
                 </div>
+                
                 <?php endforeach; ?>
         </main>
-     
+        
         <!-- BEGIN Page Footer -->
         <footer class="page-footer" role="contentinfo">
             <div class="d-flex align-items-center flex-1 text-muted">

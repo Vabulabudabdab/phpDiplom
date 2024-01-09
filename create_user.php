@@ -1,3 +1,4 @@
+<?php include __DIR__.'/userDB.php';?>
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,12 +25,15 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="page_login.php">Войти</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Выйти</a>
-                </li>
+            <?php  if(!empty($_SESSION ['name'])): ?>
+                        <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Выйти</a>
+                    </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                        <a class="nav-link" href="page_login.php">Войти</a>
+                    </li>
+                        <?php endif; ?> 
             </ul>
         </div>
     </nav>
@@ -42,7 +46,7 @@
 
 
         </div>
-        <form action="userdsAdd.php" method="post">
+        <form action="userdsAdd.php" method="post" enctype='multipart/form-data'>
             <div class="row">
                 <div class="col-xl-6">
                     <div id="panel-1" class="panel">
@@ -111,7 +115,7 @@
 
                                 <div class="form-group">
                                     <label class="form-label" for="example-fileinput">Загрузить аватар</label>
-                                    <input type="file" id="example-fileinput" class="form-control-file" name="img">
+                                    <input type="file" id="example-fileinput" class="form-control-file" name="file">
                                 </div>
                             </div>
                         </div>

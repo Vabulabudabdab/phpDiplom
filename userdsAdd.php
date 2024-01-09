@@ -1,6 +1,8 @@
-<?php 
+<?php
 session_start();
+error_reporting(E_ALL);
 //posts
+
 $name = $_POST['name'];
 
 $workplace = $_POST['workplace'];
@@ -15,14 +17,13 @@ $password = $_POST['password'];
 
 $status = $_POST['status'];
 
-$img = $_POST['img'];
+$img = $_FILES['file'];
 
 $vk = $_POST['vk'];
 
-$telegram = $_POST['telegram'];
-
 $instagram = $_POST['instagram'];
 
+$telegram = $_POST['telegram'];
 
 $pdo = new PDO("mysql:host=localhost; dbname=DiplomDB;", "root", "");
 
@@ -49,9 +50,6 @@ $stmt -> execute(['emailverify' => $email]);
 
 $checkMail = $stmt->fetch(PDO::FETCH_ASSOC);
 
-echo $checkMail;
-
-print_r($checkMail);
 
 if (!empty($checkMail)) {
     exit;
@@ -77,13 +75,23 @@ if ($checkMail == $email) {
 
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO addUser (name, workplace, telephone, adress, email, password, status, img, vk, telegram, instagram)
- VALUES (:name, :workplace, :telephone, :adress, :email, :password, :status, :img, :vk, :telegram, :instagram)";
+$sql = "INSERT INTO addUser (name, workplace, telephone, adress, email, password, status, img, vk, instagram, telegram)
+ VALUES (:name, :workplace, :telephone, :adress, :email, :password, :status, :img, :vk, :instagram, :telegram)";
 
 $statement = $pdo->prepare($sql);
 
-$statement->execute(['name' => $name, 'workplace' => $workplace, 'telephone' => $telephone, 'adress' => $adress, 'email' => $email, 'password' => $hashed_password, 'status' => $status, 'img' => $img, 'vk' => $vk, 'telegram' => $telegram, 'instagram' => $instagram]);
+$statement->execute(['name' => $name, 'workplace' => $workplace, 'telephone' => $telephone, 'adress' => $adress, 'email' => $email,
+ 'password' => $hashed_password, 'status' => $status, 'img' => $img, 'vk' => $vk,  'instagram' => $instagram, 'telegram' => $telegram,]);
 
+//add to main
 
-header("Location: /users.php");
+ $sql = "INSERT INTO registerUser (emailverify,password) VALUES (:emailverify, :password)";
+
+ $statement = $pdo->prepare($sql);
+
+ $statement-> execute(['emailverify' => $email, 'password' => $hashed_password]);
+
+var_dump($_FILES['file']);
+
+header("Location:/users.php");
 ?>
