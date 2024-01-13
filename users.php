@@ -99,7 +99,7 @@
                                     </a>
                                   
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="edit.php">
+                                        <a class="dropdown-item" href="edit.php?id=<?= $row['id']?>">
                                             <i class="fa fa-edit"></i>
                                         Редактировать</a>
                                         <a class="dropdown-item" href="security.php">
@@ -112,12 +112,12 @@
                                             <i class="fa fa-camera"></i>
                                             Загрузить аватар
                                         </a>
-                                        <form action="deleteUser.php" method="POST">
+                                  
                                         <a href="deleteUser.php?id=<?= $row['id'] ?>" class="dropdown-item" onclick="return confirm('are you sure?');">
                                             <i class="fa fa-window-close"></i>
                                             Удалить
                                         </a>
-                                        </form>
+                                       
                                         
                                     </div>
                                     <?php else: ?>

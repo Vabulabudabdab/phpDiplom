@@ -12,3 +12,7 @@ $data->execute();
 
 
 $result = $data->fetchAll();
+
+foreach ($result as $row) {
+    
+}
