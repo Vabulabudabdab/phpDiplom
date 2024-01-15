@@ -1,4 +1,5 @@
 <?php
+include __DIR__.'/userDB.php';
 session_start();
 error_reporting(E_ALL);
 //posts
@@ -18,6 +19,11 @@ $password = $_POST['password'];
 $status = $_POST['status'];
 
 $img = $_FILES['file'];
+
+$imgName = $img['name'];
+
+$pathFile = __DIR__.'./img/'.$imgName;
+
 
 $vk = $_POST['vk'];
 
@@ -81,9 +87,9 @@ $sql = "INSERT INTO addUser (name, workplace, telephone, adress, email, password
 $statement = $pdo->prepare($sql);
 
 $statement->execute(['name' => $name, 'workplace' => $workplace, 'telephone' => $telephone, 'adress' => $adress, 'email' => $email,
- 'password' => $hashed_password, 'status' => $status, 'img' => $img, 'vk' => $vk,  'instagram' => $instagram, 'telegram' => $telegram,]);
+ 'password' => $hashed_password, 'status' => $status, 'img' => $imgName,'vk' => $vk, 'instagram' => $instagram, 'telegram' => $telegram,]);
 
-//add to main
+//register add
 
  $sql = "INSERT INTO registerUser (emailverify,password) VALUES (:emailverify, :password)";
 
@@ -91,7 +97,7 @@ $statement->execute(['name' => $name, 'workplace' => $workplace, 'telephone' => 
 
  $statement-> execute(['emailverify' => $email, 'password' => $hashed_password]);
 
-var_dump($_FILES['file']);
+var_dump($imgName);
 
 header("Location:/users.php");
 ?>

@@ -46,7 +46,7 @@
 
 
         </div>
-        <form action="userdsAdd.php" method="post" enctype='multipart/form-data'>
+        <form action="userdsAdd.php" method="POST" enctype='multipart/form-data'>
             <div class="row">
                 <div class="col-xl-6">
                     <div id="panel-1" class="panel">
@@ -174,7 +174,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12 mt-3 d-flex flex-row-reverse">
-                                        <button class="btn btn-success">Добавить</button>
+                                        <button type="submit" class="btn btn-success">Добавить</button>
                                     </div>
                                 </div>
                             </div>
