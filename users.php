@@ -82,6 +82,7 @@
                         <div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
                             <div class="d-flex flex-row align-items-center">
                                 <span class="status status-success mr-3">
+                                    <!-- Пересоздать таблицу, создать таблицу с изображениями и выводить её здесь вместе с пользователями, во избежание багов, сделай в ближайшее время -->
                                     <span class="rounded-circle profile-image d-block " style="background-image:url('img/<?=$row['img']?>');" background-size: cover;></span>
                                 </span> 
 
@@ -108,7 +109,7 @@
                                         <a class="dropdown-item" href="status.php">
                                             <i class="fa fa-sun"></i>
                                         Установить статус</a>
-                                        <a class="dropdown-item" href="media.php">
+                                        <a class="dropdown-item" href="media.php?id=<?= $row['id']?>">
                                             <i class="fa fa-camera"></i>
                                             Загрузить аватар
                                         </a>

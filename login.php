@@ -47,7 +47,3 @@ if($emailverify == "Admin@gmail.com") {
     $_SESSION['adm'] = $emailverify;
     header("Location:/users.php");
 }
-
-var_dump($emailverify);
-var_dump($password);
-echo session_id();
