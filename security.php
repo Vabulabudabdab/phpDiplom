@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php include __DIR__.'/userDB.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,12 +24,15 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="page_login.php">Войти</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Выйти</a>
-                </li>
+            <?php  if(!empty($_SESSION ['name'])): ?>
+                        <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Выйти</a>
+                    </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                        <a class="nav-link" href="page_login.php">Войти</a>
+                    </li>
+                        <?php endif; ?> 
             </ul>
         </div>
     </nav>
@@ -39,7 +43,7 @@
             </h1>
 
         </div>
-        <form action="">
+        <form action="changePass.php?id=<?= $row['id']?>" method="POST">
             <div class="row">
                 <div class="col-xl-6">
                     <div id="panel-1" class="panel">
@@ -50,20 +54,21 @@
                             <div class="panel-content">
                                 <!-- email -->
                                 <div class="form-group">
+                                <input type="hidden" id="simpleinput" class="form-control" value="<?=$_GET['id'];?>" name="id">
                                     <label class="form-label" for="simpleinput">Email</label>
-                                    <input type="text" id="simpleinput" class="form-control" value="john@example.com">
+                                    <input type="text" id="simpleinput" class="form-control" value="" name="email">
                                 </div>
 
                                 <!-- password -->
                                 <div class="form-group">
                                     <label class="form-label" for="simpleinput">Пароль</label>
-                                    <input type="password" id="simpleinput" class="form-control">
+                                    <input type="password" id="simpleinput" class="form-control" name="password">
                                 </div>
 
                                 <!-- password confirmation-->
                                 <div class="form-group">
                                     <label class="form-label" for="simpleinput">Подтверждение пароля</label>
-                                    <input type="password" id="simpleinput" class="form-control">
+                                    <input type="password" id="simpleinput" class="form-control" name="newPass">
                                 </div>
 
 

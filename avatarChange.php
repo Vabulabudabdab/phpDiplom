@@ -1,30 +1,38 @@
 <?php
 include __DIR__.'/userDB.php';
 
-$id = $_GET['id'];
+$id = $_POST['id'];
 
-$img = $_GET['file'];
+$file = $_FILES['file'];
 
-$imgName = $img;
+$name = $file['name'];
 
-$pathFile = __DIR__.'./img/'.$imgName;
+$pathFile = __DIR__.'./img/'.$name;
 
+if(isset($_POST['id'])) {
 
-if(isset($_GET['id'])) {
 
     $stmt = $db->prepare("SELECT * FROM addUser WHERE img = ?");
-    $stmt->execute([$_GET['file']]);
+    $stmt->execute([$_POST['file']]);
     $nm = $stmt->fetch();
 
     $stmt = $db->prepare("UPDATE addUser SET img = :img WHERE id = :id");
-    $stmt->execute(['id' => $id, 'img' => $imgName]);
+    $stmt->execute(['id' => $id, 'img' => $name]);
 
+    if(!empty($_FILES['file'])) {
+        $file = $_FILES['file'];
+        $name = $file['name'];
+        $pathFile = __DIR__.'./img/'.$name;
     
+        if(!move_uploaded_file($file['tmp_name'], $pathFile)) {
+            echo 'Ошибка загрузки файла';
+        }
+    
+        $data = $db->prepare("INSERT INTO `addUser`(`img`) VALUES (?)");
+        $data -> execute([$name]);
+    
+    }
 
-    var_dump($_GET['file']);
-    var_dump($imgName);
-    var_dump($img);
-
-    header("Location:/users.php");
 }
 
+header("Location:/users.php");

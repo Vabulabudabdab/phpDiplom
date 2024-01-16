@@ -45,7 +45,7 @@
             </h1>
 
         </div>
-        <form action="avatarChange.php?id=<?= $row['id']?>" method="GET">
+        <form enctype="multipart/form-data" action="avatarChange.php?id=<?= $row['id']?>" method="POST">
             <div class="row">
                 <div class="col-xl-6">
                     <div id="panel-1" class="panel">
@@ -57,18 +57,16 @@
                                 <div class="form-group">
                                     <img src="img/<?=$row['id']?>" alt="" class="img-responsive" width="200">
                                 </div>
-
+                                <input type="hidden" id="simpleinput" class="form-control" value="<?=$_GET['id'];?>" name="id">
                                 <div class="form-group">
                                     <label class="form-label" for="example-fileinput">Выберите аватар</label>
 
-                                    <input type="hidden" id="simpleinput" class="form-control" value="<?=$_GET['id'];?>" name="id"> 
-
-                                    <input type="file" id="example-fileinput" class="form-control-file" name="file">
+                                    <input name="file" type="file" id="example-fileinput" class="form-control-file"/>
                                 </div>
 
 
                                 <div class="col-md-12 mt-3 d-flex flex-row-reverse">
-                                    <button class="btn btn-warning">Загрузить</button>
+                                    <button type="submit" class="btn btn-warning">Загрузить</button>
                                 </div>
                             </div>
                         </div>

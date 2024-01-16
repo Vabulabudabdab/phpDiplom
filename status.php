@@ -1,3 +1,5 @@
+<?php session_start();?>
+<?php include __DIR__.'/userDB.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,13 +24,18 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="page_login.php">Войти</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Выйти</a>
-                </li>
-            </ul>
+                  
+                  <?php  if(!empty($_SESSION ['name'])): ?>
+                      <li class="nav-item">
+                      <a class="nav-link" href="logout.php">Выйти</a>
+                  </li>
+                  <?php else: ?>
+                      <li class="nav-item">
+                      <a class="nav-link" href="page_login.php">Войти</a>
+                  </li>
+                      <?php endif; ?>
+
+              </ul>
         </div>
     </nav>
     <main id="js-page-content" role="main" class="page-content mt-3">
@@ -38,7 +45,7 @@
             </h1>
 
         </div>
-        <form action="">
+        <form action="changeStatus.php?=<?= $row['id']?>" method="GET">
             <div class="row">
                 <div class="col-xl-6">
                     <div id="panel-1" class="panel">
@@ -52,7 +59,8 @@
                                         <!-- status -->
                                         <div class="form-group">
                                             <label class="form-label" for="example-select">Выберите статус</label>
-                                            <select class="form-control" id="example-select">
+                                            <input type="hidden" id="simpleinput" class="form-control" value="<?=$_GET['id'];?>" name="id">
+                                            <select class="form-control" id="example-select" name="status">
                                                 <option>Онлайн</option>
                                                 <option>Отошел</option>
                                                 <option>Не беспокоить</option>

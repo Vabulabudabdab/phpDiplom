@@ -89,6 +89,20 @@ $statement = $pdo->prepare($sql);
 $statement->execute(['name' => $name, 'workplace' => $workplace, 'telephone' => $telephone, 'adress' => $adress, 'email' => $email,
  'password' => $hashed_password, 'status' => $status, 'img' => $imgName,'vk' => $vk, 'instagram' => $instagram, 'telegram' => $telegram,]);
 
+ if(!empty($_FILES['file'])) {
+    $file = $_FILES['file'];
+    $name = $file['name'];
+    $pathFile = __DIR__.'./img/'.$name;
+
+    if(!move_uploaded_file($file['tmp_name'], $pathFile)) {
+        echo 'Ошибка загрузки файла';
+    }
+
+    $data = $db->prepare("INSERT INTO `addUser`(`img`) VALUES (?)");
+    $data -> execute([$name]);
+
+}
+
 //register add
 
  $sql = "INSERT INTO registerUser (emailverify,password) VALUES (:emailverify, :password)";
