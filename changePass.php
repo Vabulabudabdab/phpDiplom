@@ -16,6 +16,17 @@ if(isset($_GET['id'])) {
     $stmt->execute([$_POST['email']]);
     $em = $stmt->fetch();
 
+    $stmt = $db->prepare("SELECT * FROM registerUser WHERE emailverify = :emailverify");
+
+    $stmt -> execute(['emailverify' => $email]);
+
+    $checkMail = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!empty($checkMail)) {
+        header("Location:/users.php");
+        exit;
+    }
+
     $stmt = $db->prepare("SELECT * FROM addUser WHERE password = ?");
     $stmt->execute([$_POST['password']]);
     $work = $stmt->fetch();
