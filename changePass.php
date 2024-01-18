@@ -45,4 +45,6 @@ if(isset($_GET['id'])) {
 
 }
 
+$_SESSION['name'] = $email;
+
 header("Location:/users.php");

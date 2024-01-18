@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                 <input type="hidden" id="simpleinput" class="form-control" value="<?=$_GET['id'];?>" name="id">
                                     <label class="form-label" for="simpleinput">Email</label>
-                                    <input type="text" id="simpleinput" class="form-control" value="" name="email">
+                                    <input type="email" id="simpleinput" class="form-control" value="" name="email">
                                 </div>
 
                                 <!-- password -->
