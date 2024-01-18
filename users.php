@@ -49,14 +49,13 @@
                     <i class='subheader-icon fal fa-users'></i> Список пользователей
                 </h1>
             </div>
-            <?php  if(!empty($_SESSION ['adm'])): ?>
+            <?php if(!empty($_SESSION ['adm'])): ?>
             <div class="row">
                 <div class="col-xl-12">
                     <a class="btn btn-success" href="create_user.php">Добавить</a>
-            <?php else: ?>
+            <?php elseif(!empty($_SESSION ['name'])): ?>
                 <div class="row">
                 <div class="col-xl-12">
-                <?php echo $_SESSION ['name'];  ?>
             <?php endif; ?>
 
                     <div class="border-faded bg-faded p-3 mb-g d-flex mt-3">
@@ -100,7 +99,7 @@
                                     <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>
                                         <i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>
                                     </a>
-                                  
+
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="edit.php?id=<?= $row['id']?>">
                                             <i class="fa fa-edit"></i>
@@ -111,11 +110,10 @@
                                         <a class="dropdown-item" href="status.php?id=<?= $row['id']?>">
                                             <i class="fa fa-sun"></i>
                                         Установить статус</a>
-                                        <a class="dropdown-item" href="media.php?id=<?= $row['id']?>">
+                                        <a class="dropdown-item" href="media.php?id=<?= $row['id']?>&img=<?= $row['img']?>">
                                             <i class="fa fa-camera"></i>    
                                             Загрузить аватар
                                         </a>
-                                  
                                         <a href="deleteUser.php?id=<?= $row['id'] ?>" class="dropdown-item" onclick="return confirm('are you sure?');">
                                             <i class="fa fa-window-close"></i>
                                             Удалить
@@ -123,11 +121,37 @@
                                        
                                         
                                     </div>
-                                    <?php else: ?>
+                                    <?php elseif($_SESSION['name'] == $row['email']):?>
+                                           
+                                        <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false">
+                                        <?php echo $row['name']; ?>
+                                    <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>
+                                        <i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>
+
+                                        </a>
+                                        <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="edit.php?id=<?= $row['id']?>">
+                                            <i class="fa fa-edit"></i>
+                                        Редактировать</a>
+                                        <a class="dropdown-item" href="security.php?id=<?= $row['id']?>">
+                                            <i class="fa fa-lock"></i>
+                                        Безопасность</a>
+                                        <a class="dropdown-item" href="status.php?id=<?= $row['id']?>">
+                                            <i class="fa fa-sun"></i>
+                                        Установить статус</a>
+                                        <a class="dropdown-item" href="media.php?id=<?= $row['id']?>&img=<?= $row['img']?>">
+                                            <i class="fa fa-camera"></i>    
+                                            Загрузить аватар
+                                        </a>
+                                        
+                                    </div>
+                                    </a>
+
+                                    <?php else:?>
 
                                         <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false">
-                                       <?php echo $row['name']; ?>
-                                        </a>
+                                        <?php echo $row['name']; ?>
+
                                     </a>
                                     <?php endif; ?>
 
@@ -142,9 +166,9 @@
 
                         <div class="card-body p-0 collapse show">
                             <div class="p-3">
-                                <a href="tel:+13174562564" class="mt-1 d-block fs-sm fw-400 text-dark">
+                                <a href="<?php echo $row['telephone']; ?>" class="mt-1 d-block fs-sm fw-400 text-dark">
                                     <i class="fas fa-mobile-alt text-muted mr-2"></i><?php echo $row['telephone']; ?> </a>
-                                <a href="mailto:oliver.kopyov@smartadminwebapp.com" class="mt-1 d-block fs-sm fw-400 text-dark">
+                                <a href="<?php echo $row['email']; ?>" class="mt-1 d-block fs-sm fw-400 text-dark">
                                     <i class="fas fa-mouse-pointer text-muted mr-2"></i><?php echo $row['email']; ?> </a>
                                 <address class="fs-sm fw-400 mt-4 text-muted">
                                     <i class="fas fa-map-pin mr-2"></i><?php echo $row['adress']; ?> </address>

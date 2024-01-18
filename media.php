@@ -34,7 +34,9 @@
                       <a class="nav-link" href="page_login.php">Войти</a>
                   </li>
                       <?php endif; ?>
-
+                      <?php if($_SESSION['name'] == null): ?>
+                      <?php header("Location:/users.php")?>
+                      <?php endif?>
               </ul>
         </div>
     </nav>
@@ -43,7 +45,6 @@
             <h1 class="subheader-title">
                 <i class='subheader-icon fal fa-image'></i> Загрузить аватар
             </h1>
-
         </div>
         <form enctype="multipart/form-data" action="avatarChange.php?id=<?= $row['id']?>" method="POST">
             <div class="row">
@@ -53,9 +54,13 @@
                             <div class="panel-hdr">
                                 <h2>Текущий аватар</h2>
                             </div>
+                            <?php $dir = $_GET['img']; ?>
+
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <img src="img/<?=$row['id']?>" alt="" class="img-responsive" width="200">
+                                    
+                                    <img src="img/<?=$dir?>" alt="" class="img-responsive" width="200">
+
                                 </div>
                                 <input type="hidden" id="simpleinput" class="form-control" value="<?=$_GET['id'];?>" name="id">
                                 <div class="form-group">

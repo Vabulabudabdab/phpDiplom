@@ -32,7 +32,6 @@ $stmt->execute();
 $userCheck = $stmt->fetch();
 
 $_SESSION ['name'] = $emailverify;
-$_SESSION ['password'] = $password;
 
 if ($userCheck && password_verify($_POST['password'], $user['password'])) {
     header("Location:/users.php");
@@ -42,8 +41,8 @@ if ($userCheck && password_verify($_POST['password'], $user['password'])) {
     exit;
 }
 
-
 if($emailverify == "Admin@gmail.com") {
     $_SESSION['adm'] = $emailverify;
     header("Location:/users.php");
 }
+

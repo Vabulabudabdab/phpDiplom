@@ -32,7 +32,10 @@
                         <li class="nav-item">
                         <a class="nav-link" href="page_login.php">Войти</a>
                     </li>
-                        <?php endif; ?> 
+                        <?php endif; ?>
+                        <?php if($_SESSION['name'] == null): ?>
+                      <?php header("Location:/users.php")?>
+                      <?php endif?> 
             </ul>
         </div>
     </nav>
