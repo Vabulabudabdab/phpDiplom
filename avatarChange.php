@@ -1,6 +1,6 @@
 <?php
 include __DIR__.'/userDB.php';
-
+error_reporting(E_ERROR | E_PARSE);
 $id = $_POST['id'];
 
 $file = $_FILES['file'];
@@ -27,12 +27,10 @@ if(isset($_POST['id'])) {
         if(!move_uploaded_file($file['tmp_name'], $pathFile)) {
             echo 'Ошибка загрузки файла';
         }
-    
-        $data = $db->prepare("INSERT INTO `addUser`(`img`) VALUES (?)");
-        $data -> execute([$name]);
-    
+
     }
 
+    header("Location:/users.php");
 }
 
 header("Location:/users.php");

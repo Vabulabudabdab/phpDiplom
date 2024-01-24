@@ -62,26 +62,26 @@
                                     
                                     <input type="hidden" id="simpleinput" class="form-control" value="<?=$_GET['id'];?>" name="id">
 
-                                    <input type="text" id="simpleinput" class="form-control" value="" name="name">
+                                    <input type="text" id="simpleinput" class="form-control" value="<? echo $_GET['name'];?>" name="name">
 
                                 </div>
 
                                 <!-- title -->
                                 <div class="form-group">
                                     <label class="form-label" for="simpleinput">Место работы</label>
-                                    <input type="text" id="simpleinput" class="form-control" value="" name="workplace">
+                                    <input type="text" id="simpleinput" class="form-control" value="<? echo $_GET['workplace'];?>" name="workplace">
                                 </div>
 
                                 <!-- tel -->
                                 <div class="form-group">
                                     <label class="form-label" for="simpleinput">Номер телефона</label>
-                                    <input type="text" id="simpleinput" class="form-control" value="" name="telephone">
+                                    <input type="text" id="simpleinput" class="form-control" value="<? echo $_GET['telephone'];?>" name="telephone">
                                 </div>
 
                                 <!-- address -->
                                 <div class="form-group">
                                     <label class="form-label" for="simpleinput">Адрес</label>
-                                    <input type="text" id="simpleinput" class="form-control" value="" name="adress">
+                                    <input type="text" id="simpleinput" class="form-control" value="<? echo $_GET['adress'];?>" name="adress">
                                 </div>
                                 <div class="col-md-12 mt-3 d-flex flex-row-reverse">
                                     <button class="btn btn-warning">Редактировать</button>

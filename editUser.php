@@ -20,11 +20,6 @@ if(isset($_GET['id']))
     $stmt->execute([$_GET['name']]);
     $nm = $stmt->fetch();
 
-    if (!empty($nm)) {
-        header("Location:/users.php");
-        exit;
-    }
-
     $stmt = $db->prepare("SELECT * FROM addUser WHERE workplace = ?");
     $stmt->execute([$_GET['workplace']]);
     $work = $stmt->fetch();

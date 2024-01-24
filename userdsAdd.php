@@ -98,9 +98,6 @@ $statement->execute(['name' => $name, 'workplace' => $workplace, 'telephone' => 
         echo 'Ошибка загрузки файла';
     }
 
-    $data = $db->prepare("INSERT INTO `addUser`(`img`) VALUES (?)");
-    $data -> execute([$name]);
-
 }
 
 //register add
@@ -112,6 +109,8 @@ $statement->execute(['name' => $name, 'workplace' => $workplace, 'telephone' => 
  $statement-> execute(['emailverify' => $email, 'password' => $hashed_password]);
 
 var_dump($imgName);
+
+$_SESSION['flash_message'] = "Пользователь успешно добавлен";
 
 header("Location:/users.php");
 ?>

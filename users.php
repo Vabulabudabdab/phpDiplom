@@ -57,7 +57,10 @@
                 <div class="row">
                 <div class="col-xl-12">
             <?php endif; ?>
-
+            <?php if(isset($_SESSION['flash_message'])): ?>
+            <?php echo $_SESSION['flash_message'] ?>
+            <?php unset($_SESSION['flash_message']);?>
+            <?php endif;?>
                     <div class="border-faded bg-faded p-3 mb-g d-flex mt-3">
                         <input type="text" id="js-filter-contacts" name="filter-contacts" class="form-control shadow-inset-2 form-control-lg" placeholder="Найти пользователя">
                         <div class="btn-group btn-group-lg btn-group-toggle hidden-lg-down ml-3" data-toggle="buttons">
@@ -101,7 +104,7 @@
                                     </a>
 
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="edit.php?id=<?= $row['id']?>">
+                                        <a class="dropdown-item" href="edit.php?id=<?= $row['id'];?>&name=<?= $row['name'];?>&workplace=<?= $row['workplace'];?>&telephone=<?= $row['telephone'];?>&adress=<?=$row['adress'];?>">
                                             <i class="fa fa-edit"></i>
                                         Редактировать</a>
                                         <a class="dropdown-item" href="security.php?id=<?= $row['id']?>">
@@ -130,7 +133,7 @@
 
                                         </a>
                                         <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="edit.php?id=<?= $row['id']?>">
+                                        <a class="dropdown-item" href="edit.php?id=<?= $row['id'];?>&name=<?= $row['name'];?>&workplace=<?= $row['workplace'];?>&telephone=<?= $row['telephone'];?>&adress=<?=$row['adress'];?>">
                                             <i class="fa fa-edit"></i>
                                         Редактировать</a>
                                         <a class="dropdown-item" href="security.php?id=<?= $row['id']?>">
@@ -139,7 +142,7 @@
                                         <a class="dropdown-item" href="status.php?id=<?= $row['id']?>">
                                             <i class="fa fa-sun"></i>
                                         Установить статус</a>
-                                        <a class="dropdown-item" href="media.php?id=<?= $row['id']?>&img=<?= $row['img']?>">
+                                        <a class="dropdown-item" href="media.php?id=<?= $row['id']?> & img=<?= $row['img']?>">
                                             <i class="fa fa-camera"></i>    
                                             Загрузить аватар
                                         </a>
@@ -148,11 +151,10 @@
                                     </a>
 
                                     <?php else:?>
-
                                         <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false">
                                         <?php echo $row['name']; ?>
-
                                     </a>
+                                    
                                     <?php endif; ?>
 
                                     <span class="text-truncate text-truncate-xl"><?php echo $row['workplace']; ?> </span>

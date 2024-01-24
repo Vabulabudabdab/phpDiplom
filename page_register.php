@@ -72,34 +72,36 @@
                                     <form id="js-login" novalidate="novalidate" action="register.php" method="post">
 
                                         <div class="form-group">
-                                            <label class="form-label" for="emailverify">Email</label>
-                                    
-                                            <input type="hidden" id="simpleinput" class="form-control" name="name">
-
-                                            <input type="hidden" id="simpleinput" class="form-control" name="workplace">
+                                            
+                                        <input type="hidden" id="simpleinput" class="form-control" name="workplace">
 
                                             <input type="hidden" id="simpleinput" class="form-control" name="telephone">
 
                                             <input type="hidden" id="simpleinput" class="form-control" name="adress">
 
-                                            <input type="hidden" id="simpleinput" class="form-control" name="email">
-
-                                            <input type="hidden" id="simpleinput" class="form-control" name="password">
-
                                             <input type="hidden" id="example-fileinput" class="form-control-file" name="status">
 
-                                            <input type="hidden" id="example-fileinput" class="form-control-file" name="file">
-                                            
+                                            <input type="hidden" id="example-fileinput" class="form-control-file" name="img">
+
                                             <input type="hidden" class="form-control border-left-0 bg-transparent pl-0" name="vk">
 
                                             <input type="hidden" class="form-control border-left-0 bg-transparent pl-0" name="telegram">
 
                                             <input type="hidden" class="form-control border-left-0 bg-transparent pl-0" name="instagram">
+                                            <label class="form-label" for="emailverify">Email</label>
 
                                             <input type="email" id="emailverify" name="emailverify" class="form-control" placeholder="Эл. адрес" required="required">
                                             <div class="invalid-feedback">Заполните поле.</div>
                                             <div class="help-block">Эл. адрес будет вашим логином при авторизации</div>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label" for="emailverify">Имя</label>     
+                                        <input type="text" id="simpleinput" class="form-control" name="name" placeholder ="Имя" required>
+                                            <!-- Данное поле добавил от себя, чтобы пользователь вводил своё имя, для вывода в Users.php -->
+                                            <div class="invalid-feedback">Заполните поле.</div>
+                                            <div class="help-block">Имя на сайте</div>
+                                            </div>
 
                                         <div class="form-group">
                                             <label class="form-label" for="userpassword">Пароль <br></label>

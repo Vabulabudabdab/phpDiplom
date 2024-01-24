@@ -42,13 +42,9 @@ $telephone = $_POST['telephone'];
 
 $adress = $_POST['adress'];
 
-$email = $_POST['email'];
+$status = "Онлайн";
 
-$password = $_POST['password'];
-
-$status = $_POST['status'];
-
-$img = $_POST['file'];
+$img = "kot.jpg";
 
 $vk = $_POST['vk'];
 
